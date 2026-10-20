@@ -30,6 +30,7 @@
     .video-backdrop { position:fixed; inset:0; z-index:0; overflow:hidden; background:#000; }
     .video-backdrop iframe { position:absolute; top:50%; left:50%; width:100vw; height:56.25vw; min-width:177.78vh; min-height:100vh; transform:translate(-50%, -50%); border:0; filter:grayscale(1) contrast(1.08); pointer-events:none; }
     .video-wash { position:fixed; inset:0; z-index:1; background:rgba(242,238,229,.62); pointer-events:none; }
+    .video-caption-mask { position:fixed; left:0; right:0; bottom:0; height:180px; z-index:1; background:linear-gradient(to bottom, rgba(242,238,229,0), rgba(242,238,229,.94) 34%, rgba(242,238,229,1) 78%); pointer-events:none; }
     header, main, footer { position:relative; z-index:2; }
     header { display: flex; justify-content: space-between; align-items: center; padding: 25px 5vw; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
     .brand { font-weight: 800; letter-spacing: .02em; font-size: 28px; text-transform: none; }
@@ -66,6 +67,7 @@
 <body>
   <div class="video-backdrop" aria-hidden="true"><iframe src="https://www.youtube.com/embed/SCAX6c7GhDw?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=SCAX6c7GhDw&amp;controls=0&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;cc_load_policy=0&amp;vq=hd1080" title="Background video" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
   <div class="video-wash" aria-hidden="true"></div>
+  <div class="video-caption-mask" aria-hidden="true"></div>
   <header><div class="brand">Luke Paz</div><div class="status"><span class="dot"></span> open to making things</div></header>
   <main>
     <section class="board" aria-label="Interactive portfolio map">
