@@ -24,12 +24,7 @@
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
-    body::before {
-      content: "";
-      position: fixed; inset: 0; pointer-events: none; opacity: .23;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
+    body::before { display: none; }
     header { display: flex; justify-content: space-between; align-items: center; padding: 25px 5vw; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
     .brand { font-weight: 800; letter-spacing: .02em; font-size: 18px; text-transform: none; }
     .status { display: flex; align-items: center; gap: 10px; }
@@ -38,7 +33,7 @@
     .intro { display:flex; justify-content:space-between; align-items:end; margin: 2vh 2vw 0; }
     .intro h1 { margin: 0; max-width: 560px; font-size: clamp(2.5rem, 7vw, 7rem); line-height: .82; letter-spacing: -.08em; font-weight: 900; }
     .intro p { max-width: 230px; margin: 0 0 4px; font-size: 13px; line-height: 1.35; }
-    .board { position: relative; height: min(70vw, 700px); min-height: 530px; margin-top: 4vh; border: 1.5px solid var(--line); overflow: hidden; background: rgba(255,255,255,.12); }
+    .board { position: relative; height: min(70vw, 700px); min-height: 530px; margin-top: 4vh; border: 1.5px solid var(--line); overflow: hidden; background: transparent; }
     .board::after { content:""; position:absolute; inset: 10px; border: 1px solid rgba(23,23,23,.16); pointer-events:none; }
     .label { position:absolute; top: 18px; left: 22px; font-family: Georgia, serif; font-size: 17px; font-style: italic; z-index:2; }
     .year { position:absolute; top: 20px; right: 22px; font-size: 11px; letter-spacing: .14em; z-index:2; }
