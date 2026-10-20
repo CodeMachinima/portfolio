@@ -52,12 +52,9 @@
     .orbit text { fill:var(--ink); font-family:Georgia, serif; font-size:4.1px; font-style:italic; letter-spacing:.28px; }
     .orbit .orbit-path { fill:none; stroke:rgba(23,23,23,.16); stroke-width:.15; stroke-dasharray:.7 1.4; }
     @keyframes orbit-spin { from { transform:translate(-50%, -50%) rotate(0deg); } to { transform:translate(-50%, -50%) rotate(360deg); } }
-    .detail { min-height: 100px; display:flex; justify-content:space-between; align-items:center; gap: 20px; border-bottom: 1px solid var(--line); padding: 19px 2vw; }
-    .detail strong { font-family: Georgia, serif; font-size: 26px; font-weight:400; }
-    .detail p { margin:0; color:var(--muted); font-size:13px; max-width: 430px; text-align:right; }
     footer { display:flex; justify-content:space-between; padding: 24px 5vw 35px; font-size: 11px; text-transform:uppercase; letter-spacing:.13em; }
     a { color:inherit; text-decoration:none; border-bottom:1px solid currentColor; }
-    @media (max-width: 650px) { header {padding: 18px 5vw;} .board {height: 610px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{width:78%;} .detail{align-items:flex-start; flex-direction:column;} .detail p{text-align:left;} footer{gap:20px; flex-direction:column;} }
+    @media (max-width: 650px) { header {padding: 18px 5vw;} .board {height: 610px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{width:78%;} footer{gap:20px; flex-direction:column;} }
   </style>
 </head>
 <body>
@@ -72,20 +69,21 @@
       </div>
       <div class="orbit" aria-label="Portfolio keywords"><svg viewBox="0 0 100 100" role="img"><defs><path id="orbit-path" class="orbit-path" d="M50,50 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" /></defs><use href="#orbit-path" class="orbit-path" /><text><textPath href="#orbit-path" startOffset="0%">learn more  ·  experiments  ·  visual studies  ·  say hello  ·  play  ·  process  ·  curious  ·  make  ·  </textPath></text></svg></div>
     </section>
-    <section class="detail" aria-live="polite"><strong id="detail-title">Start in the middle.</strong><p id="detail-copy">Every word is a doorway. Hover to explore, click to leave a note here.</p></section>
   </main>
   <footer><span>© Luke Paz</span><span><a href="mailto:hello@lukepaz.com">hello@lukepaz.com</a> · San José, CA</span></footer>
   <script>
     const title = document.querySelector('#detail-title');
     const copy = document.querySelector('#detail-copy');
-    document.querySelectorAll('[data-title]').forEach((item) => {
-      item.addEventListener('click', () => {
-        document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-        title.textContent = item.dataset.title;
-        copy.textContent = item.dataset.copy;
+    if (title && copy) {
+      document.querySelectorAll('[data-title]').forEach((item) => {
+        item.addEventListener('click', () => {
+          document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          title.textContent = item.dataset.title;
+          copy.textContent = item.dataset.copy;
+        });
       });
-    });
+    }
   </script>
 </body>
 </html>
