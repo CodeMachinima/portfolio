@@ -50,17 +50,18 @@
     .right .arrow { left:-58px; top:50%; transform:translateY(-50%); }
     .bottom .arrow { left:50%; top:-58px; transform:translateX(-50%); }
     .left .arrow { right:-58px; top:50%; transform:translateY(-50%); }
-    .orbit { position:absolute; left:50%; top:50%; width:min(58%, 560px); aspect-ratio:1; transform:translate(-50%, -50%); list-style:none; padding:0; margin:0; border:1px dashed rgba(23,23,23,.25); border-radius:50%; }
-    .orbit li { position:absolute; font-family: Georgia, serif; font-size: clamp(12px, 1.25vw, 18px); font-style:italic; transition: all .25s ease; white-space:nowrap; }
-    .orbit li:hover { color: var(--orange); font-size: 1.5em; cursor:pointer; }
-    .orbit li:nth-child(1){left:50%;top:4%;transform:translateX(-50%) rotate(-18deg)} .orbit li:nth-child(2){right:16%;top:5%;transform:rotate(8deg)} .orbit li:nth-child(3){right:-7%;top:31%;transform:rotate(21deg)} .orbit li:nth-child(4){right:-8%;bottom:27%;transform:rotate(72deg)} .orbit li:nth-child(5){right:16%;bottom:4%;transform:rotate(-28deg)} .orbit li:nth-child(6){left:50%;bottom:-5%;transform:translateX(-50%) rotate(7deg)} .orbit li:nth-child(7){left:16%;bottom:4%;transform:rotate(31deg)} .orbit li:nth-child(8){left:-8%;top:31%;transform:rotate(-71deg)}
+    .orbit { position:absolute; left:50%; top:50%; width:min(68%, 640px); aspect-ratio:1; transform:translate(-50%, -50%); z-index:1; pointer-events:none; animation: orbit-spin 28s linear infinite; }
+    .orbit svg { width:100%; height:100%; overflow:visible; }
+    .orbit text { fill:var(--ink); font-family:Georgia, serif; font-size:4.1px; font-style:italic; letter-spacing:.28px; }
+    .orbit .orbit-path { fill:none; stroke:rgba(23,23,23,.16); stroke-width:.15; stroke-dasharray:.7 1.4; }
+    @keyframes orbit-spin { from { transform:translate(-50%, -50%) rotate(0deg); } to { transform:translate(-50%, -50%) rotate(360deg); } }
     .note { position:absolute; left: 24px; bottom: 22px; max-width: 180px; font-size:11px; line-height:1.4; text-transform:uppercase; letter-spacing:.1em; }
     .detail { min-height: 100px; display:flex; justify-content:space-between; align-items:center; gap: 20px; border-bottom: 1px solid var(--line); padding: 19px 2vw; }
     .detail strong { font-family: Georgia, serif; font-size: 26px; font-weight:400; }
     .detail p { margin:0; color:var(--muted); font-size:13px; max-width: 430px; text-align:right; }
     footer { display:flex; justify-content:space-between; padding: 24px 5vw 35px; font-size: 11px; text-transform:uppercase; letter-spacing:.13em; }
     a { color:inherit; text-decoration:none; border-bottom:1px solid currentColor; }
-    @media (max-width: 650px) { header {padding: 18px 5vw;} .intro {display:block;} .intro p {margin-top:20px;} .board {height: 610px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{inset:14% 7%;} .detail{align-items:flex-start; flex-direction:column;} .detail p{text-align:left;} footer{gap:20px; flex-direction:column;} }
+    @media (max-width: 650px) { header {padding: 18px 5vw;} .board {height: 610px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{width:78%;} .detail{align-items:flex-start; flex-direction:column;} .detail p{text-align:left;} footer{gap:20px; flex-direction:column;} }
   </style>
 </head>
 <body>
@@ -74,9 +75,7 @@
         <button class="arm bottom" data-title="Socials" data-copy="Find the process, experiments, and in-between moments on the social side of the portfolio."><span class="arrow">↓</span>Socials</button>
         <button class="arm left" data-title="My work" data-copy="Selected work across visual studies, web experiments, and projects made with other people."><span class="arrow">←</span>My<br>Work</button>
       </div>
-      <ul class="orbit" aria-label="Portfolio keywords">
-        <li data-title="learn" data-copy="Always collecting a new reference, technique, or question.">learn more</li><li data-title="experiments" data-copy="The best ideas usually start a little unfinished.">experiments</li><li data-title="visual studies" data-copy="Color, type, texture, and the joy of looking closely.">visual studies</li><li data-title="say hello" data-copy="The quickest route to a new project is a good conversation.">say hello</li><li data-title="play" data-copy="Play is a serious part of the process.">play</li><li data-title="process" data-copy="Notes, sketches, false starts, and the part that makes the final work better.">process</li><li data-title="curious" data-copy="A useful default setting.">curious</li><li data-title="make" data-copy="Take an idea out of your head and give it somewhere to go.">make</li>
-      </ul>
+      <div class="orbit" aria-label="Portfolio keywords"><svg viewBox="0 0 100 100" role="img"><defs><path id="orbit-path" class="orbit-path" d="M50,50 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" /></defs><use href="#orbit-path" class="orbit-path" /><text><textPath href="#orbit-path" startOffset="0%">learn more  ·  experiments  ·  visual studies  ·  say hello  ·  play  ·  process  ·  curious  ·  make  ·  </textPath></text></svg></div>
       <div class="note">click the big words<br>or orbit around</div>
     </section>
     <section class="detail" aria-live="polite"><strong id="detail-title">Start in the middle.</strong><p id="detail-copy">Every word is a doorway. Hover to explore, click to leave a note here.</p></section>
