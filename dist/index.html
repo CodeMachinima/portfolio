@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke — Portfolio</title>
+  <style>
+    :root {
+      --paper: #f2eee5;
+      --ink: #171717;
+      --muted: #77736c;
+      --acid: #d7f35f;
+      --orange: #ff6a35;
+      --blue: #89c8ff;
+      --line: rgba(23, 23, 23, .76);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; opacity: .23;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 25px 5vw; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .brand { font-weight: 800; letter-spacing: .02em; font-size: 18px; text-transform: none; }
+    .status { display: flex; align-items: center; gap: 10px; }
+    .dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; display: inline-block; }
+    main { max-width: 1440px; margin: auto; padding: 1vh 4vw 70px; }
+    .intro { display:flex; justify-content:space-between; align-items:end; margin: 2vh 2vw 0; }
+    .intro h1 { margin: 0; max-width: 560px; font-size: clamp(2.5rem, 7vw, 7rem); line-height: .82; letter-spacing: -.08em; font-weight: 900; }
+    .intro p { max-width: 230px; margin: 0 0 4px; font-size: 13px; line-height: 1.35; }
+    .board { position: relative; height: min(70vw, 700px); min-height: 530px; margin-top: 4vh; border: 1.5px solid var(--line); overflow: hidden; background: rgba(255,255,255,.12); }
+    .board::after { content:""; position:absolute; inset: 10px; border: 1px solid rgba(23,23,23,.16); pointer-events:none; }
+    .label { position:absolute; top: 18px; left: 22px; font-family: Georgia, serif; font-size: 17px; font-style: italic; z-index:2; }
+    .year { position:absolute; top: 20px; right: 22px; font-size: 11px; letter-spacing: .14em; z-index:2; }
+    .cross { position: absolute; inset: 8% 8%; display:grid; place-items:center; }
+    .cross::before, .cross::after { content:""; position:absolute; background: var(--ink); }
+    .cross::before { width: 70%; height: 1.5px; }
+    .cross::after { width: 1.5px; height: 70%; }
+    .arm { position:absolute; z-index:3; text-align:center; font-weight: 900; letter-spacing: -.08em; line-height: .8; cursor:pointer; transition: transform .25s ease, color .25s ease; }
+    .arm:hover, .arm.active { transform: scale(1.08) rotate(-2deg); color: var(--orange); }
+    .arm span { display:block; }
+    .top { top: 3%; font-size: clamp(2.5rem, 6vw, 5.8rem); }
+    .right { right: 4%; font-size: clamp(2.4rem, 5vw, 5rem); }
+    .bottom { bottom: 2%; font-size: clamp(2.5rem, 6vw, 5.8rem); }
+    .left { left: 3%; font-size: clamp(2.4rem, 5vw, 5rem); }
+    .arrow { font-size: 45px; font-weight: 300; line-height: 1; letter-spacing: 0; }
+    .orbit { position:absolute; inset: 11% 14%; list-style:none; padding:0; margin:0; animation: drift 18s linear infinite; }
+    .orbit li { position:absolute; font-family: Georgia, serif; font-size: clamp(12px, 1.25vw, 18px); font-style:italic; transition: all .25s ease; white-space:nowrap; }
+    .orbit li:hover { color: var(--orange); font-size: 1.5em; cursor:pointer; }
+    .orbit li:nth-child(1){left:12%;top:2%;transform:rotate(-18deg)} .orbit li:nth-child(2){left:39%;top:-5%;transform:rotate(8deg)} .orbit li:nth-child(3){right:5%;top:20%;transform:rotate(21deg)} .orbit li:nth-child(4){right:-3%;top:53%;transform:rotate(72deg)} .orbit li:nth-child(5){right:16%;bottom:2%;transform:rotate(-28deg)} .orbit li:nth-child(6){left:37%;bottom:-8%;transform:rotate(7deg)} .orbit li:nth-child(7){left:1%;bottom:19%;transform:rotate(31deg)} .orbit li:nth-child(8){left:-2%;top:39%;transform:rotate(-71deg)}
+    @keyframes drift { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    .note { position:absolute; left: 24px; bottom: 22px; max-width: 180px; font-size:11px; line-height:1.4; text-transform:uppercase; letter-spacing:.1em; }
+    .detail { min-height: 100px; display:flex; justify-content:space-between; align-items:center; gap: 20px; border-bottom: 1px solid var(--line); padding: 19px 2vw; }
+    .detail strong { font-family: Georgia, serif; font-size: 26px; font-weight:400; }
+    .detail p { margin:0; color:var(--muted); font-size:13px; max-width: 430px; text-align:right; }
+    footer { display:flex; justify-content:space-between; padding: 24px 5vw 35px; font-size: 11px; text-transform:uppercase; letter-spacing:.13em; }
+    a { color:inherit; text-decoration:none; border-bottom:1px solid currentColor; }
+    @media (max-width: 650px) { header {padding: 18px 5vw;} .intro {display:block;} .intro p {margin-top:20px;} .board {height: 610px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{inset:14% 7%;} .detail{align-items:flex-start; flex-direction:column;} .detail p{text-align:left;} footer{gap:20px; flex-direction:column;} }
+  </style>
+</head>
+<body>
+  <header><div class="brand">Luke Paz</div><div class="status"><span class="dot"></span> open to making things</div></header>
+  <main>
+    <section class="intro"><h1>A little<br>about me.</h1><p>This is a portfolio built like a sketchbook: start in the middle, follow whatever catches your eye.</p></section>
+    <section class="board" aria-label="Interactive portfolio map">
+      <div class="label">Luke's portfolio</div><div class="year">selected works / 2026</div>
+      <div class="cross">
+        <button class="arm top" data-title="About me" data-copy="A curious maker exploring art, design, and the small details that make a big feeling.">About<br><span>Me</span><span class="arrow">↑</span></button>
+        <button class="arm right" data-title="Contact" data-copy="Have an idea, a question, or a good excuse to make something? Say hello."><span class="arrow">→</span>Contact</button>
+        <button class="arm bottom" data-title="Socials" data-copy="Find the process, experiments, and in-between moments on the social side of the portfolio."><span class="arrow">↓</span>Socials</button>
+        <button class="arm left" data-title="My work" data-copy="Selected work across visual studies, web experiments, and projects made with other people."><span class="arrow">←</span>My<br>Work</button>
+      </div>
+      <ul class="orbit" aria-label="Portfolio keywords">
+        <li data-title="learn" data-copy="Always collecting a new reference, technique, or question.">learn more</li><li data-title="experiments" data-copy="The best ideas usually start a little unfinished.">experiments</li><li data-title="visual studies" data-copy="Color, type, texture, and the joy of looking closely.">visual studies</li><li data-title="say hello" data-copy="The quickest route to a new project is a good conversation.">say hello</li><li data-title="play" data-copy="Play is a serious part of the process.">play</li><li data-title="process" data-copy="Notes, sketches, false starts, and the part that makes the final work better.">process</li><li data-title="curious" data-copy="A useful default setting.">curious</li><li data-title="make" data-copy="Take an idea out of your head and give it somewhere to go.">make</li>
+      </ul>
+      <div class="note">click the big words<br>or orbit around</div>
+    </section>
+    <section class="detail" aria-live="polite"><strong id="detail-title">Start in the middle.</strong><p id="detail-copy">Every word is a doorway. Hover to explore, click to leave a note here.</p></section>
+  </main>
+  <footer><span>© Luke Paz</span><span><a href="mailto:hello@lukepaz.com">hello@lukepaz.com</a> · San José, CA</span></footer>
+  <script>
+    const title = document.querySelector('#detail-title');
+    const copy = document.querySelector('#detail-copy');
+    document.querySelectorAll('[data-title]').forEach((item) => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+        title.textContent = item.dataset.title;
+        copy.textContent = item.dataset.copy;
+      });
+    });
+  </script>
+</body>
+</html>
