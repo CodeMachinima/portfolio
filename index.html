@@ -56,21 +56,21 @@
     .orbit text { fill:var(--ink); font-family:Georgia, serif; font-size:4.6px; font-style:italic; letter-spacing:.2px; }
     .orbit .orbit-path { fill:none; stroke:rgba(23,23,23,.16); stroke-width:.15; stroke-dasharray:.7 1.4; }
     @keyframes orbit-spin { from { transform:translate(-50%, -50%) rotate(0deg); } to { transform:translate(-50%, -50%) rotate(360deg); } }
-    a { color:inherit; text-decoration:none; border-bottom:1px solid currentColor; }
+    a { color:inherit; text-decoration:none; }
     @media (max-width: 650px) { header {padding: 18px 5vw;} .board {height: 720px; min-height:0;} .cross {inset: 8% 4%;} .top{top:6%;} .bottom{bottom:6%;} .left{left:0;} .right{right:0;} .orbit{width:124%;} footer{gap:20px; flex-direction:column;} }
   </style>
 </head>
 <body>
   <div class="video-backdrop" aria-hidden="true"><iframe src="https://www.youtube.com/embed/SCAX6c7GhDw?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=SCAX6c7GhDw&amp;controls=0&amp;playsinline=1&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;vq=hd1080" title="Background video" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
   <div class="video-wash" aria-hidden="true"></div>
-  <header><div class="brand">Luke Paz</div></header>
+  <header><a class="brand" href="index.html">Luke Paz</a></header>
   <main>
     <section class="board" aria-label="Interactive portfolio map">
       <div class="cross">
-        <button class="arm top" data-title="About me" data-copy="A curious maker exploring art, design, and the small details that make a big feeling.">About<br><span>Me</span><span class="arrow">↑</span></button>
-        <button class="arm right" data-title="Contact" data-copy="Have an idea, a question, or a good excuse to make something? Say hello."><span class="arrow">→</span>Contact</button>
-        <button class="arm bottom" data-title="Socials" data-copy="Find the process, experiments, and in-between moments on the social side of the portfolio."><span class="arrow">↓</span>Socials</button>
-        <button class="arm left" data-title="My work" data-copy="Selected work across visual studies, web experiments, and projects made with other people."><span class="arrow">←</span>My<br>Work</button>
+        <a class="arm top" href="about.html">About<br><span>Me</span><span class="arrow">↑</span></a>
+        <a class="arm right" href="contact.html"><span class="arrow">→</span>Contact</a>
+        <a class="arm bottom" href="social.html"><span class="arrow">↓</span>Socials</a>
+        <a class="arm left" href="work.html"><span class="arrow">←</span>My<br>Work</a>
       </div>
       <div class="orbit" aria-label="Hospital for Souls lyric"><svg viewBox="0 0 100 100" role="img"><defs><path id="orbit-path" class="orbit-path" d="M50,50 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" /></defs><use href="#orbit-path" class="orbit-path" /><text><textPath href="#orbit-path" startOffset="0%" textLength="360" lengthAdjust="spacingAndGlyphs">Everybody wants to go to Heaven, but nobody wants to die. I can't fear death, no longer, I've died a thousand times.</textPath></text></svg></div>
     </section>
