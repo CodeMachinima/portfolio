@@ -15,8 +15,10 @@
     header { display:flex; justify-content:space-between; align-items:flex-start; padding:25px 5vw 0; }
     .brand { font-family:Arial,Helvetica,sans-serif; font-size:28px; font-weight:800; letter-spacing:.02em; }
     .work-title { position:relative; margin:0 1vw 0 0; font-family:var(--gothic); font-size:clamp(3.3rem,7vw,6.6rem); font-weight:600; letter-spacing:-.04em; line-height:.9; transform:rotate(-2deg); }
-    .scratch { position:absolute; left:-30%; right:-10%; bottom:-30px; width:140%; height:62px; overflow:visible; }
-    .scratch path { fill:none; stroke:var(--line); stroke-linecap:round; stroke-width:2.2; }
+    .scratch { position:absolute; left:-24%; top:-28px; width:150%; height:132px; overflow:visible; pointer-events:none; }
+    .scratch path { fill:none; stroke:var(--line); stroke-linecap:round; stroke-linejoin:round; }
+    .scratch .loop { stroke-width:1.8; }
+    .scratch .slash { stroke-width:1.25; }
     main { max-width:1500px; margin:0 auto; padding:8vh 4vw 100px; }
     .section { margin:0 0 105px; }
     .section-heading { display:inline-block; position:relative; margin:0 0 32px; font-family:var(--gothic); font-size:clamp(2rem,4vw,4.1rem); font-weight:600; letter-spacing:-.03em; line-height:1; transform:rotate(-1deg); }
@@ -33,14 +35,19 @@
     .project-number { font-family:var(--gothic); font-size:13px; letter-spacing:.12em; opacity:.65; padding-top:7px; }
     .back { position:fixed; left:5vw; bottom:24px; z-index:6; font-family:var(--gothic); font-size:16px; font-weight:600; letter-spacing:.02em; text-transform:none; }
     .back::before { content:"←"; display:inline-block; margin-right:8px; font-size:18px; vertical-align:-2px; }
-    @media (max-width:700px) { header { padding:18px 5vw 0; } .brand { font-size:25px; } .work-title { font-size:clamp(2.9rem,13vw,5rem); } main { padding:10vh 5vw 100px; } .section { margin-bottom:76px; } .grid { grid-template-columns:1fr; gap:36px; } .scratch { bottom:-28px; } }
+    @media (max-width:700px) { header { padding:18px 5vw 0; } .brand { font-size:25px; } .work-title { font-size:clamp(2.9rem,13vw,5rem); } main { padding:10vh 5vw 100px; } .section { margin-bottom:76px; } .grid { grid-template-columns:1fr; gap:36px; } .scratch { left:-28%; top:-20px; width:160%; height:112px; } }
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="index.html">Luke Paz</a>
     <h1 class="work-title">My Works
-      <svg class="scratch" viewBox="0 0 420 60" aria-hidden="true"><path d="M5 34 C92 25 184 48 275 33 S362 28 414 34"/><path d="M20 43 C111 34 210 54 305 39 S374 36 397 40"/></svg>
+      <svg class="scratch" viewBox="0 0 420 132" aria-hidden="true">
+        <path class="loop" d="M18 62 C42 9 164 2 300 20 C402 33 420 78 360 106 C279 143 88 128 25 93 C-6 76 -2 55 18 62 Z"/>
+        <path class="loop" d="M30 69 C83 27 190 28 312 37 C398 43 397 84 333 99 C241 121 104 113 38 87 C13 77 14 65 30 69 Z"/>
+        <path class="slash" d="M2 98 C82 73 158 66 244 69 C309 71 362 82 418 61"/>
+        <path class="slash" d="M43 20 C113 57 191 81 280 87 C337 91 383 82 419 67"/>
+      </svg>
     </h1>
   </header>
   <main>
