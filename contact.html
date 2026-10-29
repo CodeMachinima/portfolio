@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Luke Paz</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap');
+    :root { --paper:#050505; --ink:#f2eee5; --muted:#9b968d; --line:rgba(242,238,229,.82); --gothic:"Cormorant Garamond",Georgia,serif; }
+    * { box-sizing:border-box; }
+    html { min-height:100%; zoom:50%; }
+    body { margin:0; min-height:100vh; color:var(--ink); background:var(--paper); font-family:var(--gothic); overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.16; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E"); z-index:5; mix-blend-mode:screen; }
+    a { color:inherit; text-decoration:none; }
+    header { display:flex; justify-content:space-between; align-items:flex-start; padding:25px 5vw 0; }
+    .brand { font-family:Arial,Helvetica,sans-serif; font-size:28px; font-weight:800; letter-spacing:.02em; }
+    .contact-title { position:relative; margin:0 1vw 0 0; font-family:var(--gothic); font-size:clamp(3.3rem,7vw,6.6rem); font-weight:600; letter-spacing:-.04em; line-height:.9; transform:rotate(-2deg); }
+    .scratch { position:absolute; left:-24%; top:-28px; width:150%; height:132px; overflow:visible; pointer-events:none; }
+    .scratch path { fill:none; stroke:var(--line); stroke-linecap:round; stroke-linejoin:round; }
+    .scratch .loop { stroke-width:1.8; }
+    .scratch .slash { stroke-width:1.25; }
+    main { width:min(100% - 10vw, 900px); margin:0 auto; padding:10vh 0 100px; }
+    .intro { margin:0 0 42px; font-size:clamp(1.25rem,2vw,1.75rem); line-height:1.05; font-weight:600; }
+    .intro a { text-decoration:underline; text-underline-offset:4px; }
+    form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px 30px; }
+    .field { display:flex; flex-direction:column; gap:8px; }
+    .field.full { grid-column:1 / -1; }
+    label { font-size:1.2rem; font-weight:600; letter-spacing:.02em; }
+    input, textarea { width:100%; border:2px solid var(--line); border-radius:0; outline:none; background:transparent; color:var(--ink); font:600 1.35rem var(--gothic); padding:15px 17px; transition:border-color .2s ease, background .2s ease; }
+    input { height:62px; }
+    textarea { min-height:260px; resize:vertical; line-height:1.05; }
+    input::placeholder, textarea::placeholder { color:var(--muted); opacity:1; }
+    input:focus, textarea:focus { border-color:#fff; background:rgba(242,238,229,.04); }
+    .submit { grid-column:1 / -1; margin-top:8px; min-height:78px; border:2px solid var(--ink); background:var(--ink); color:#050505; cursor:pointer; font:700 1.6rem var(--gothic); transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .submit:hover, .submit:focus-visible { background:transparent; color:var(--ink); transform:translateY(-3px); }
+    .back { position:fixed; left:5vw; bottom:24px; z-index:6; font-size:16px; font-weight:600; text-transform:none; }
+    .back::before { content:"←"; display:inline-block; margin-right:8px; font-size:18px; vertical-align:-2px; }
+    @media (max-width:700px) {
+      header { padding:18px 5vw 0; }
+      .brand { font-size:25px; }
+      .contact-title { font-size:clamp(2.9rem,13vw,5rem); }
+      .scratch { left:-28%; top:-20px; width:160%; height:112px; }
+      main { width:90vw; padding:12vh 0 100px; }
+      form { grid-template-columns:1fr; gap:20px; }
+      .field.full, .submit { grid-column:auto; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">Luke Paz</a>
+    <h1 class="contact-title">Contact
+      <svg class="scratch" viewBox="0 0 420 132" aria-hidden="true">
+        <path class="loop" d="M18 62 C42 9 164 2 300 20 C402 33 420 78 360 106 C279 143 88 128 25 93 C-6 76 -2 55 18 62 Z"/>
+        <path class="loop" d="M30 69 C83 27 190 28 312 37 C398 43 397 84 333 99 C241 121 104 113 38 87 C13 77 14 65 30 69 Z"/>
+        <path class="slash" d="M2 98 C82 73 158 66 244 69 C309 71 362 82 418 61"/>
+        <path class="slash" d="M43 20 C113 57 191 81 280 87 C337 91 383 82 419 67"/>
+      </svg>
+    </h1>
+  </header>
+  <main>
+    <p class="intro">For any inquiries, email <a href="mailto:lukepazcm@gmail.com">lukepazcm@gmail.com</a>, or use the form below to get in touch.</p>
+    <form action="mailto:lukepazcm@gmail.com" method="post" enctype="text/plain">
+      <div class="field">
+        <label for="first-name">First name</label>
+        <input id="first-name" name="First name" type="text" placeholder="First name" autocomplete="given-name" required />
+      </div>
+      <div class="field">
+        <label for="last-name">Last name</label>
+        <input id="last-name" name="Last name" type="text" placeholder="Last name" autocomplete="family-name" required />
+      </div>
+      <div class="field full">
+        <label for="subject">Subject</label>
+        <input id="subject" name="Subject" type="text" placeholder="Subject" required />
+      </div>
+      <div class="field full">
+        <label for="details">Details</label>
+        <textarea id="details" name="Details" placeholder="Enter your details or description" required></textarea>
+      </div>
+      <button class="submit" type="submit">Submit</button>
+    </form>
+  </main>
+  <a class="back" href="index.html">Back to index</a>
+</body>
+</html>
